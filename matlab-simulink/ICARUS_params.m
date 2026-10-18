@@ -34,3 +34,11 @@ P.FSv = 2*sqrt(2)*P.Vb;         % voltage range: +-2 pu peak (~+-784 V)
 P.FSi = 10*P.Ib;                % current ranges: +-10 pu peak [ind res crit grid]
 P.ns  = 0.002;                  % noise: 0.2% of full scale (rms)
 P.nD  = 1;                      % loop delay in samples (1 = same as now)
+
+P.hw = 0;   % 0 = no board (dry run), 1 = talk to the myRIO
+P.use = 0;   % who drives the breakers: 0 = ctrl, 1 = myrio
+
+% reconnection
+P.kRC = 0.9;                % grid / bus "healthy" (pu)
+P.nRC = round(20e-3/Ts);    % grid healthy 20 ms before reconnecting (400 samples)
+P.kV0 = 0.1;                % bus "dead" after battery opens (pu)
